@@ -61,6 +61,10 @@ table tr:not(.me) a {
         text-align: center;
         border-bottom: 1px solid $color-quaternary;
     }
+
+    .button {
+        width: 100%;
+    }
 }
 
 footer {
