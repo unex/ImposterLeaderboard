@@ -166,7 +166,7 @@ async def logout(request: Request):
     request.session.clear()
     return RedirectResponse(app.url_path_for('root'))
 
-@app.get('/{board}')
+@app.get('/b/{board}')
 async def single_leaderboard(request: Request, board: str):
     user = None
     if 'id' in request.session:
