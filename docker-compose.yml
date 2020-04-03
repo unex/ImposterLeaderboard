@@ -8,7 +8,7 @@ services:
         volumes:
             - ./data/mongo:/data/db
         env_file:
-          - .env
+          - prod.env
         command: --replSet rs0
 
     web_app:
@@ -16,7 +16,7 @@ services:
             dockerfile: Dockerfile
             context: .
         env_file:
-            - .env
+            - prod.env
         depends_on:
             - mongo
         ports:
