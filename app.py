@@ -163,3 +163,16 @@ async def login(request: Request, user = Depends(user)):
 async def logout(request: Request):
     request.session.clear()
     return RedirectResponse(app.url_path_for('root'))
+
+@app.get('/{board}')
+async def single_leaderboard(request: Request, board: str):
+    user = None
+    if 'id' in request.session:
+        user = await db.users.find_one({"_id": ObjectId(SERIALIZER.loads(request.session.get('id')))})
+
+    if board in ['games_played', 'games_won', 'max_lose_streak', 'max_win_streak', 'user_score']:
+        users = await db.users.find(sort=[(board, DESCENDING)]).to_list(50)
+
+        return templates.TemplateResponse('board.html', {'request': request, 'user': user, 'board': board, 'users': enumerate(users)})
+
+    raise StarletteHTTPException(status_code=404)

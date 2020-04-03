@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="column-offset-25 column column-50">
+            <table>
+                <thead>
+                    <tr><th></th><th>Username</th><th>{{board}}</th></tr>
+                </thead>
+                <tbody>
+                    {% for place, u in users %}
+                    <tr class="{{'me' if u.id == user.id else ''}}">
+                        <td>#{{place+1}}</td><td>/u/{{u.name}}</td>
+                        {% if board == 'user_score' %}
+                        <td>{{'{:,.1f}'.format(u[board]*100)}}%</td>
+                        {% else %}
+                        <td>{{'{:,.0f}'.format(u[board])}}</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
