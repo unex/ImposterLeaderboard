@@ -37,6 +37,11 @@ header {
     color: $color-primary;
 }
 
+.board-list {
+    display: flex;
+    justify-content: space-between;
+}
+
 .error-page {
     display: flex;
     flex-direction: column;
