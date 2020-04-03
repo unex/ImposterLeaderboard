@@ -33,6 +33,10 @@ header {
     min-height: calc(100vh - 64px - 16px);
 }
 
+.me {
+    color: $color-primary;
+}
+
 .error-page {
     display: flex;
     flex-direction: column;
