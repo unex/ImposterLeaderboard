@@ -3,6 +3,16 @@
 
 <div class="container">
     <div class="row">
+        <h4>Other Leaderboards:</h4>
+    </div>
+    <div class="row">
+        {% for board in boards %}
+        <div class="column">
+            <a href="{{url_for('single_leaderboard',board=board)}}">{{board}}</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
         <div class="column column-50">
             <table>
                 <thead>

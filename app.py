@@ -34,6 +34,8 @@ REDIRECT_URI_BASE = os.environ.get("REDIRECT_URI_BASE")
 SECRET_KEY = os.environ.get('SECRET_KEY', 'this_should_be_configured')
 SERIALIZER = URLSafeSerializer(SECRET_KEY)
 
+BOARDS = ['games_played', 'games_won', 'max_lose_streak', 'max_win_streak', 'user_score']
+
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
@@ -153,7 +155,7 @@ async def root(request: Request):
 
     win = await db.users.find(sort=[('max_win_streak', DESCENDING)]).to_list(50)
     lose = await db.users.find(sort=[('max_lose_streak', DESCENDING)]).to_list(50)
-    return templates.TemplateResponse('leaderboard.html', {'request': request, 'user': user, 'win': enumerate(win), 'lose': enumerate(lose)})
+    return templates.TemplateResponse('leaderboard.html', {'request': request, 'user': user, 'boards': BOARDS, 'win': enumerate(win), 'lose': enumerate(lose)})
 
 @app.get('/login')
 async def login(request: Request, user = Depends(user)):
@@ -170,7 +172,7 @@ async def single_leaderboard(request: Request, board: str):
     if 'id' in request.session:
         user = await db.users.find_one({"_id": ObjectId(SERIALIZER.loads(request.session.get('id')))})
 
-    if board in ['games_played', 'games_won', 'max_lose_streak', 'max_win_streak', 'user_score']:
+    if board in BOARDS:
         users = await db.users.find(sort=[(board, DESCENDING)]).to_list(50)
 
         return templates.TemplateResponse('board.html', {'request': request, 'user': user, 'board': board, 'users': enumerate(users)})
