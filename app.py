@@ -44,8 +44,6 @@ mongo: AsyncIOMotorClient
 db: AsyncIOMotorCollection
 session: ClientSession
 
-print("REEEEEE", DB_HOST, DB_PORT)
-
 @app.on_event("startup")
 async def create_db_client():
     global mongo, db, session
