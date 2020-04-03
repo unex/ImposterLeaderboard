@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container profile-page">
+    <div class="row center">
+        <h2>/u/{{profile.name}}</h2>
+    </div>
+
+    <div class="row">
+        <div class="column-offset-80 column column-20 button button-outline"><a href="https://reddit.com/u/{{profile.name}}" target="_blank">reddit profile</a></div>
+    </div>
+
+    <div class="row">
+        <div class="column column-50"><span>Games Played</span></div>
+        <div class="column column-50"><span>{{'{:,.0f}'.format(profile.games_played)}}</span></div>
+    </div>
+
+    <div class="row">
+        <div class="column column-50"><span>Games Won</span></div>
+        <div class="column column-50"><span>{{'{:,.0f}'.format(profile.games_won)}}</span></div>
+    </div>
+
+    <div class="row">
+        <div class="column column-50"><span>Max Lose Streak</span></div>
+        <div class="column column-50"><span>{{'{:,.0f}'.format(profile.max_lose_streak)}}</span></div>
+    </div>
+
+    <div class="row">
+        <div class="column column-50"><span>Max Win Streak</span></div>
+        <div class="column column-50"><span>{{'{:,.0f}'.format(profile.max_win_streak)}}</span></div>
+    </div>
+
+    <div class="row">
+        <div class="column column-50"><span>User Score</span></div>
+        <div class="column column-50"><span>{{profile.user_score_pretty}}</span></div>
+    </div>
+</div>
+
+{% endblock %}

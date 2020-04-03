@@ -178,3 +178,16 @@ async def single_leaderboard(request: Request, board: str):
         return templates.TemplateResponse('board.html', {'request': request, 'user': user, 'board': board, 'users': enumerate(users)})
 
     raise StarletteHTTPException(status_code=404)
+
+@app.get('/u/{n}')
+async def user_profile(request: Request, n: str):
+    user = None
+    if 'id' in request.session:
+        user = await db.users.find_one({"_id": ObjectId(SERIALIZER.loads(request.session.get('id')))})
+
+    profile_ = await db.users.find_one({'name': str(n)})
+
+    if not profile_:
+        raise StarletteHTTPException(status_code=404)
+
+    return templates.TemplateResponse('user.html', {'request': request, 'user': user, 'profile': profile_})
