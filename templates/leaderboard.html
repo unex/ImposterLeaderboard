@@ -5,11 +5,9 @@
     <div class="row">
         <h4>Other Leaderboards:</h4>
     </div>
-    <div class="row">
+    <div class="row board-list">
         {% for board in boards %}
-        <div class="column">
-            <a href="{{url_for('single_leaderboard',board=board)}}">{{board}}</a>
-        </div>
+        <a class="button button-small" href="{{url_for('single_leaderboard',board=board)}}">{{board}}</a>
         {% endfor %}
     </div>
     <div class="row">
