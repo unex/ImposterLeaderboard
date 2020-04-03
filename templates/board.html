@@ -11,7 +11,7 @@
                 <tbody>
                     {% for place, u in users %}
                     <tr class="{{'me' if u.id == user.id else ''}}">
-                        <td>#{{place+1}}</td><td>/u/{{u.name}}</td>
+                        <td>#{{place+1}}</td><td><a href="{{url_for('user_profile',n=u.name)}}">/u/{{u.name}}</a></td>
                         {% if board == 'user_score' %}
                         <td>{{'{:,.1f}'.format(u[board]*100)}}%</td>
                         {% else %}

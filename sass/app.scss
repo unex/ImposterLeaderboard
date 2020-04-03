@@ -48,6 +48,21 @@ header {
     align-items: center;
 }
 
+table tr:not(.me) a {
+    color: $color-secondary;
+    text-decoration: underline;
+}
+
+.profile-page {
+    h2 {
+        display: block;
+        width: 100%;
+        padding: 6px 0;
+        text-align: center;
+        border-bottom: 1px solid $color-quaternary;
+    }
+}
+
 footer {
     background: darken($color-initial, 10%);
     line-height: 24px;
