@@ -8,5 +8,5 @@ pipenv run uvicorn app:app --reload
 ```
 
 ```bash
-docker-compose up
+docker-compose up -d --build
 ```
