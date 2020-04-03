@@ -10,7 +10,7 @@
                 </thead>
                 <tbody>
                     {% for place, user in win %}
-                    <tr><td>#{{place+1}}</td><td>/u/{{user.name}}</td><td>{{user.max_win_streak}}</td></tr>
+                    <tr><td>#{{place+1}}</td><td>/u/{{user.name}}</td><td title="{{'{:,.0f}'.format(user.games_played)}} games played">{{'{:,.0f}'.format(user.max_win_streak)}}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -23,7 +23,7 @@
                 </thead>
                 <tbody>
                     {% for place, user in lose %}
-                    <tr><td>#{{place+1}}</td><td>/u/{{user.name}}</td><td>{{user.max_lose_streak}}</td></tr>
+                    <tr><td>#{{place+1}}</td><td>/u/{{user.name}}</td><td title="{{'{:,.0f}'.format(user.games_played)}} games played">{{'{:,.0f}'.format(user.max_lose_streak)}}</td"></tr>
                     {% endfor %}
                 </tbody>
             </table>
