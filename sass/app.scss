@@ -1,0 +1,52 @@
+@import "milligram/Color";
+
+body {
+    background: $color-initial;
+    margin: 0;
+    padding: 0
+}
+
+header {
+    background: darken($color-initial, 10%);
+    margin-bottom: 16px;
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        height: 64px;
+        line-height: 64px;
+
+        h3 {
+            line-height: inherit;
+            margin: 0;
+        }
+
+        .user * {
+            margin-left: 12px;
+        }
+    }
+}
+
+#content {
+    min-height: calc(100vh - 64px - 16px);
+}
+
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    background: darken($color-initial, 10%);
+    line-height: 24px;
+    padding: 8px 0;
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

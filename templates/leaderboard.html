@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="column column-50">
+            <table>
+                <thead>
+                    <tr><th>Username</th><th>Win Streak</th></tr>
+                </thead>
+                <tbody>
+                    {% for user in win %}
+                    <tr><td>/u/{{user.name}}</td><td>{{user.max_win_streak}}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="column column-50">
+            <table>
+                <thead>
+                    <tr><th>Username</th><th>Lose Streak</th></tr>
+                </thead>
+                <tbody>
+                    {% for user in lose %}
+                    <tr><td>/u/{{user.name}}</td><td>{{user.max_lose_streak}}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
