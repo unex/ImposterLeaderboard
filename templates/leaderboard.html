@@ -6,11 +6,11 @@
         <div class="column column-50">
             <table>
                 <thead>
-                    <tr><th>Username</th><th>Win Streak</th></tr>
+                    <tr><th></th><th>Username</th><th>Win Streak</th></tr>
                 </thead>
                 <tbody>
-                    {% for user in win %}
-                    <tr><td>/u/{{user.name}}</td><td>{{user.max_win_streak}}</td></tr>
+                    {% for place, user in win %}
+                    <tr><td>#{{place+1}}</td><td>/u/{{user.name}}</td><td>{{user.max_win_streak}}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -19,11 +19,11 @@
         <div class="column column-50">
             <table>
                 <thead>
-                    <tr><th>Username</th><th>Lose Streak</th></tr>
+                    <tr><th></th><th>Username</th><th>Lose Streak</th></tr>
                 </thead>
                 <tbody>
-                    {% for user in lose %}
-                    <tr><td>/u/{{user.name}}</td><td>{{user.max_lose_streak}}</td></tr>
+                    {% for place, user in lose %}
+                    <tr><td>#{{place+1}}</td><td>/u/{{user.name}}</td><td>{{user.max_lose_streak}}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>

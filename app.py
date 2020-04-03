@@ -155,7 +155,7 @@ async def root(request: Request):
 
     win = await db.users.find(sort=[('max_win_streak', DESCENDING)]).to_list(50)
     lose = await db.users.find(sort=[('max_lose_streak', DESCENDING)]).to_list(50)
-    return templates.TemplateResponse('leaderboard.html', {'request': request, 'user': user, 'win': win, 'lose': lose})
+    return templates.TemplateResponse('leaderboard.html', {'request': request, 'user': user, 'win': enumerate(win), 'lose': enumerate(lose)})
 
 @app.get('/login')
 async def login(request: Request, user = Depends(user)):
