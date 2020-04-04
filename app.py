@@ -67,7 +67,6 @@ async def http_exception_handler(request: Request, exc: HTTPException):
 async def user(request: Request, code: str = None, state: str = None, error: str = None) -> dict:
     if 'id' in request.session:
         user = await db.users.find_one({"_id": ObjectId(SERIALIZER.loads(request.session.get('id')))})
-        print(user)
         if user: return user
 
     if not code:
@@ -150,8 +149,6 @@ async def root(request: Request):
     user = None
     if 'id' in request.session:
         user = await db.users.find_one({"_id": ObjectId(SERIALIZER.loads(request.session.get('id')))})
-
-    print(user)
 
     win = await db.users.find(sort=[('max_win_streak', DESCENDING)]).to_list(50)
     lose = await db.users.find(sort=[('max_lose_streak', DESCENDING)]).to_list(50)
