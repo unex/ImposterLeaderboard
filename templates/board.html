@@ -6,7 +6,7 @@
         <div class="column-offset-25 column column-50">
             <table>
                 <thead>
-                    <tr><th></th><th>Username</th><th>{{board}}</th></tr>
+                    <tr><th></th><th>Username</th><th>{{board.replace('_', ' ').title()}}</th></tr>
                 </thead>
                 <tbody>
                     {% for place, u in users %}

@@ -7,7 +7,7 @@
     </div>
     <div class="row board-list">
         {% for board in boards %}
-        <a class="button button-small" href="{{url_for('single_leaderboard',board=board)}}">{{board}}</a>
+        <a class="button button-small" href="{{url_for('single_leaderboard',board=board)}}">{{board.replace('_', ' ')}}</a>
         {% endfor %}
     </div>
     <div class="row">
